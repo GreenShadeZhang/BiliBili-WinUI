@@ -10,7 +10,7 @@
 
 首页截图如下：
 
-![首页图](https://github.com/GreenShadeZhang/BiliBili-WinUI/homepage.png)
+![首页图](https://github.com/GreenShadeZhang/BiliBili-WinUI/blob/master/homepage.png)
 
 
 ## 开发环境
