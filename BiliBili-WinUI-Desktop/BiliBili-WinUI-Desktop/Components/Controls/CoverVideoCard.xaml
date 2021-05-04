@@ -1,0 +1,117 @@
+﻿<UserControl
+    x:Class="BiliBili_WinUI_Desktop.Components.Controls.CoverVideoCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Components.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:widgets="using:BiliBili_WinUI_Desktop.Components.Widgets"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <CommandBarFlyout x:Name="DefaultFlyout">
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton
+                    x:Name="LaterViewButton"
+                    Click="LaterViewButton_Click"
+                    Label="加入稍后再看">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="{StaticResource Icon}" Glyph="&#xEA3B;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <widgets:BiliImage
+                x:Name="VideoCover"
+                Height="120"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                CornerRadius="5"
+                DecodePixelWidth="{x:Bind DecodePixelWidth, Mode=OneWay}"
+                DisplayType="Rect"
+                Source="{x:Bind Cover, Mode=OneWay, Converter={StaticResource CoverResolutionConverter}, ConverterParameter=400}" />
+            <Border
+                Margin="10,0,0,10"
+                Padding="8,3"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="{ThemeResource PopupBackground}"
+                CornerRadius="3"
+                RequestedTheme="Dark"
+                Visibility="{x:Bind Duration, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}">
+                <TextBlock
+                    Foreground="{ThemeResource ImportantTextColor}"
+                    Style="{StaticResource SmallTipTextStyle}"
+                    Text="{x:Bind Duration, Mode=OneWay}"
+                    TextTrimming="None" />
+            </Border>
+            <StackPanel
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Orientation="Horizontal">
+                <Border
+                    x:Name="ReasonContainer"
+                    Margin="0,0,10,10"
+                    Padding="8,3"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource PopupBackground}"
+                    CornerRadius="3"
+                    Visibility="{x:Bind RightBottomText, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}">
+                    <TextBlock
+                        Foreground="{ThemeResource SecondaryColor}"
+                        Style="{StaticResource SmallTipTextStyle}"
+                        Text="{x:Bind RightBottomText, Mode=OneWay}" />
+                </Border>
+                <Button
+                    x:Name="ExtraButton"
+                    Width="30"
+                    Height="30"
+                    Margin="0,-5,10,5"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource PaneBackground}"
+                    Content="&#xE9A9;"
+                    Flyout="{StaticResource DefaultFlyout}"
+                    FontFamily="{StaticResource Icon}"
+                    Style="{StaticResource DefaultCircleButtonStyle}"
+                    Visibility="{x:Bind ExtraButtonVisbility, Mode=OneWay}" />
+            </StackPanel>
+
+            <Border
+                Margin="0,5,5,0"
+                Padding="8,5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="{ThemeResource PaneBackground}"
+                CornerRadius="3"
+                Visibility="{x:Bind RightTopText, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}">
+                <TextBlock
+                    Foreground="{ThemeResource PrimaryColor}"
+                    Style="{StaticResource SmallTipTextStyle}"
+                    Text="{x:Bind RightTopText, Mode=OneWay}" />
+            </Border>
+            <widgets:BiliImage
+                Width="20"
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Source="{x:Bind RightTopImage, Mode=OneWay}"
+                Visibility="{x:Bind RightTopImage, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}" />
+        </Grid>
+        <TextBlock
+            Grid.Row="1"
+            Margin="0,10,0,0"
+            MaxLines="2"
+            Style="{StaticResource BodyWrapTextStyle}"
+            Text="{x:Bind Title, Mode=OneWay}"
+            ToolTipService.ToolTip="{x:Bind Title, Mode=OneWay}"
+            Visibility="{x:Bind Title, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="BiliBili_WinUI_Desktop.Components.Widgets.TipPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Components.Widgets"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+
+        <Storyboard x:Name="PopupIn">
+            <DoubleAnimation
+                Storyboard.TargetName="PopupContainer"
+                Storyboard.TargetProperty="Opacity"
+                From="0"
+                To="1"
+                Duration="00:00:00.5">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation
+                Storyboard.TargetName="PopupContainer"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                From="-10"
+                To="-50"
+                Duration="00:00:00.5">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Name="PopupOut">
+            <DoubleAnimation
+                Storyboard.TargetName="PopupContainer"
+                Storyboard.TargetProperty="Opacity"
+                From="1"
+                To="0"
+                Duration="00:00:00.5">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation
+                Storyboard.TargetName="PopupContainer"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                From="-50"
+                To="-10"
+                Duration="00:00:00.5">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Grid>
+
+        <StackPanel
+            Name="PopupContainer"
+            MaxWidth="300"
+            Padding="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Background="{x:Bind PopupBackground, Mode=OneWay}"
+            CornerRadius="3"
+            Opacity="0">
+
+            <!--  改变Y轴和透明底  -->
+            <StackPanel.RenderTransform>
+                <TranslateTransform Y="-10" />
+            </StackPanel.RenderTransform>
+            <TextBlock
+                Name="PopupContent"
+                FontSize="12"
+                Foreground="White"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

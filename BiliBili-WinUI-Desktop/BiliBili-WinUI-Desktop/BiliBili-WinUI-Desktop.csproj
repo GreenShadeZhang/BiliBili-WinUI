@@ -1,0 +1,119 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>BiliBili_WinUI_Desktop</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\Fonts\Richasy_BiliBili.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.18362.16" />
+    <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.18362.16" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Components\Account\LoginPopup.xaml" />
+    <None Remove="Components\Widgets\AppBarComboBox.xaml" />
+    <None Remove="Components\Widgets\AsyncButton.xaml" />
+    <None Remove="Components\Widgets\BannerBlock.xaml" />
+    <None Remove="Components\Widgets\BiliImage.xaml" />
+    <None Remove="Components\Widgets\CaptchaBlock.xaml" />
+    <None Remove="Components\Widgets\CheckButton.xaml" />
+    <None Remove="Components\Widgets\EmojiPanel.xaml" />
+    <None Remove="Components\Widgets\IconInputBox.xaml" />
+    <None Remove="Components\Widgets\IconTextBlock.xaml" />
+    <None Remove="Components\Widgets\LevelBlock.xaml" />
+    <None Remove="Components\Widgets\NumberBox.xaml" />
+    <None Remove="Components\Widgets\TipPopup.xaml" />
+    <None Remove="Components\Widgets\TrimTextBlock.xaml" />
+    <None Remove="Components\Widgets\WaitingPopup.xaml" />
+    <None Remove="DesktopMainPage.xaml" />
+    <None Remove="Pages-Desktop\Main\HomePage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Common" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.WinUI.Connectivity" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.0.1" />
+    <PackageReference Include="Microsoft.ProjectReunion" Version="0.5.6" />
+    <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.5.6" />
+    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.5.6" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BiliBili-Controls\BiliBili-Controls.csproj" />
+    <ProjectReference Include="..\..\BiliBili-Lib\BiliBili-Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="DesktopMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Fonts\Richasy_BiliBili.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Page Update="Pages-Desktop\Main\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Components\Widgets\AppBarComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\BannerBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\BiliImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\CaptchaBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\CheckButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\EmojiPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\IconInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\IconTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\LevelBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\NumberBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\TipPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\TrimTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Components\Widgets\AsyncButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="BiliBili_WinUI_Desktop.DesktopMainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:layout="using:BiliBili_WinUI_Desktop.Components.Layout"
+    xmlns:local="using:BiliBili_WinUI_Desktop"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource PageBackground}"
+    SizeChanged="Page_SizeChanged"
+    mc:Ignorable="d">
+    <i:Interaction.Behaviors>
+        <ic:EventTriggerBehavior EventName="Loaded">
+            <ic:InvokeCommandAction Command="{x:Bind ViewModel.LoadedCommand}" CommandParameter="{x:Bind PagePanel}" />
+        </ic:EventTriggerBehavior>
+    </i:Interaction.Behaviors>
+    <Grid>
+        <SplitView
+            x:Name="AppSplitView"
+            CompactPaneLength="80"
+            DisplayMode="CompactInline"
+            IsPaneOpen="True"
+            OpenPaneLength="310">
+            <SplitView.Pane>
+                <Grid Padding="0,35,0,20" Background="{ThemeResource SideBackground}">
+                    <layout:SidePanel
+                        x:Name="SidePanel"
+                        HorizontalAlignment="Left"
+                        IsWide="{x:Bind AppSplitView.IsPaneOpen, Mode=TwoWay}"
+                        MenuItemCollection="{x:Bind ViewModel.MenuItemCollection, Mode=OneWay}" />
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <layout:PagePanel x:Name="PagePanel" HorizontalAlignment="Stretch" />
+            </SplitView.Content>
+        </SplitView>
+        <Grid x:Name="FullWindowContainer" Visibility="Collapsed" />
+        <Grid
+            x:Name="TitleContainer"
+            Height="35"
+            VerticalAlignment="Top"
+            Background="{ThemeResource PageBackground}"
+            Opacity="0.01" />
+    </Grid>
+</Page>

@@ -1,0 +1,221 @@
+﻿<UserControl
+    x:Class="BiliBili_WinUI_Desktop.Components.Layout.SidePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:account="using:BiliBili_WinUI_Desktop.Components.Account"
+    xmlns:bilibili="using:BiliBili_Core.Models.BiliBili"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:BiliBili_Controls.Extensions"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Components.Layout"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:others="using:BiliBili_WinUI_Desktop.Models.UI.Others"
+    xmlns:ui="using:BiliBili_WinUI_Desktop.Models.UI"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Thickness x:Key="ContainerPadding">35,0</Thickness>
+
+        <DataTemplate x:Key="RegionItemTemplate" x:DataType="bilibili:RegionContainer">
+            <StackPanel Padding="20,10">
+                <controls:ImageEx
+                    Width="45"
+                    Height="45"
+                    HorizontalAlignment="Center"
+                    Source="{x:Bind logo}" />
+                <TextBlock
+                    Width="60"
+                    Margin="0,8,0,0"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Bind name}"
+                    TextAlignment="Center" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Name="DefaultWideSideItemTemplate" x:DataType="ui:AppMenuItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    x:Name="ItemSign"
+                    Width="5"
+                    Height="25"
+                    VerticalAlignment="Center"
+                    CornerRadius="0,2,2,0" />
+                <StackPanel
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,15,0"
+                        Style="{StaticResource SideMenuIconStyle}"
+                        Text="{x:Bind Icon}" />
+                    <TextBlock Style="{StaticResource CaptionTextStyle}" Text="{x:Bind Name}" />
+                </StackPanel>
+                <Border
+                    Grid.Column="3"
+                    Margin="0,0,30,0"
+                    Padding="5,3"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource PrimaryColorOpacity}"
+                    CornerRadius="2">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="{ThemeResource PrimaryColor}"
+                        Style="{StaticResource SmallTipTextStyle}"
+                        Text="{x:Bind Unread, Mode=OneWay}" />
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Name="WideLineTemplate" x:DataType="ui:AppMenuItem">
+            <ListViewItem
+                AllowFocusOnInteraction="False"
+                IsEnabled="False"
+                IsTabStop="False">
+                <Border
+                    Margin="35,0"
+                    BorderBrush="{ThemeResource LineColorOver}"
+                    BorderThickness="0,1,0,0" />
+            </ListViewItem>
+        </DataTemplate>
+        <DataTemplate x:Name="DefaultNarrowSideItemTemplate" x:DataType="ui:AppMenuItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    x:Name="ItemSign"
+                    Width="5"
+                    Height="25"
+                    VerticalAlignment="Center"
+                    CornerRadius="0,2,2,0" />
+                <TextBlock
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontWeight="{x:Bind FontWeight}"
+                    Style="{StaticResource SideMenuIconStyle}"
+                    Text="{x:Bind Icon}"
+                    ToolTipService.ToolTip="{x:Bind Name}" />
+                <Ellipse
+                    Grid.RowSpan="2"
+                    Margin="25,-15,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Name="NarrowLineTemplate" x:DataType="ui:AppMenuItem">
+            <ListViewItem
+                AllowFocusOnInteraction="False"
+                IsEnabled="False"
+                IsTabStop="False">
+                <Border
+                    Margin="15,5"
+                    BorderBrush="{ThemeResource LineColorOver}"
+                    BorderThickness="0,1,0,0" />
+            </ListViewItem>
+        </DataTemplate>
+        <others:SideMenuItemTemplateSelector
+            x:Key="WideSideItemTemplateSelector"
+            DefaultTemplate="{StaticResource DefaultWideSideItemTemplate}"
+            LineTemplate="{StaticResource WideLineTemplate}" />
+        <others:SideMenuItemTemplateSelector
+            x:Key="NarrowSideItemTemplateSelector"
+            DefaultTemplate="{StaticResource DefaultNarrowSideItemTemplate}"
+            LineTemplate="{StaticResource NarrowLineTemplate}" />
+        <Flyout
+            x:Name="RegionFlyout"
+            FlyoutPresenterStyle="{StaticResource NoPaddingFlyoutStyle}"
+            Placement="Right">
+            <GridView
+                x:Name="RegionGridView"
+                Width="400"
+                IsItemClickEnabled="True"
+                ItemContainerStyle="{StaticResource BasicGridViewItemContainerStyle}"
+                ItemTemplate="{StaticResource RegionItemTemplate}"
+                ItemsSource="{x:Bind RegionCollection}"
+                SelectionMode="None"
+                Style="{StaticResource BasicGridView}" />
+        </Flyout>
+    </UserControl.Resources>
+    <Grid x:Name="Container" Width="310">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <RelativePanel x:Name="Header" Padding="{StaticResource ContainerPadding}">
+            <TextBlock
+                x:Name="AppLogo"
+                RelativePanel.AlignLeftWithPanel="True"
+                Style="{StaticResource AppLogoStyle}"
+                Text="&#xE902;" />
+            <Button
+                x:Name="RegionButton"
+                Content="&#xE900;"
+                Flyout="{StaticResource RegionFlyout}"
+                FontSize="20"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True"
+                Style="{StaticResource DefaultCircleButtonStyle}" />
+        </RelativePanel>
+        <Grid
+            x:Name="AccountContainer"
+            Grid.Row="1"
+            Margin="0,20,0,0"
+            Padding="{StaticResource ContainerPadding}">
+            <account:SideSlimAccountPanel x:Name="AccountPanel" />
+        </Grid>
+        <ListView
+            x:Name="SideMenuListView"
+            Grid.Row="2"
+            Margin="0,15,0,15"
+            ext:IndicatorService.IsScaleEnabled="True"
+            ext:IndicatorService.Name="ItemSign"
+            IsItemClickEnabled="True"
+            ItemContainerStyle="{StaticResource SideMenuListViewItemContainerStyle}"
+            ItemTemplateSelector="{StaticResource WideSideItemTemplateSelector}"
+            ItemsSource="{x:Bind MenuItemCollection, Mode=OneWay}"
+            Loaded="SideMenuListView_Loaded"
+            Style="{StaticResource BasicListView}" />
+        <Button
+            x:Name="PaneButton"
+            Grid.Row="3"
+            Margin="{StaticResource ContainerPadding}"
+            Click="PaneButton_Click"
+            Content=""
+            Foreground="{ThemeResource NormalTextColor}"
+            Style="{StaticResource DefaultCircleButtonStyle}" />
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Common">
+                <VisualState x:Name="WideState" />
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.Setters>
+                        <Setter Target="Container.Width" Value="80" />
+                        <Setter Target="AccountPanel.IsOnlyAvatar" Value="True" />
+                        <Setter Target="AppLogo.Text" Value="&#xE903;" />
+                        <Setter Target="AppLogo.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True" />
+                        <Setter Target="AppLogo.(RelativePanel.AlignLeftWithPanel)" Value="False" />
+                        <Setter Target="RegionButton.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True" />
+                        <Setter Target="RegionButton.(RelativePanel.AlignRightWithPanel)" Value="False" />
+                        <Setter Target="RegionButton.Margin" Value="0,45,0,0" />
+                        <Setter Target="PaneButton.Content" Value="" />
+                        <Setter Target="PaneButton.Margin" Value="0" />
+                        <Setter Target="PaneButton.HorizontalAlignment" Value="Center" />
+                        <Setter Target="SideMenuListView.ItemTemplateSelector" Value="{StaticResource NarrowSideItemTemplateSelector}" />
+                        <Setter Target="Header.Padding" Value="0" />
+                        <Setter Target="AccountContainer.Padding" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

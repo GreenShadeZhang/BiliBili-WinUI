@@ -1,0 +1,122 @@
+﻿<UserControl
+    x:Class="BiliBili_WinUI_Desktop.Components.Layout.TopPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:account="using:BiliBili_WinUI_Desktop.Components.Account"
+    xmlns:controls1="using:BiliBili_WinUI_Desktop.Components.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:BiliBili_Controls.Extensions"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Components.Layout"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:ui="using:BiliBili_WinUI_Desktop.Models.UI"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    SizeChanged="UserControl_SizeChanged"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <DataTemplate x:Key="WideTopMenuItemTemplate" x:DataType="ui:AppMenuItem">
+            <StackPanel Margin="10,0">
+                <TextBlock
+                    FontSize="{CustomResource BasicFontSize}"
+                    Foreground="{ThemeResource ImportantTextColor}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Bind Name}" />
+                <Border
+                    x:Name="Sign"
+                    Width="5"
+                    Height="5"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    Background="{x:Bind IsSelected, Converter={StaticResource SideMenuSignColorConverter}, Mode=OneWay}"
+                    CornerRadius="3" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="NarrowTopMenuItemTemplate" x:DataType="ui:AppMenuItem">
+            <StackPanel Margin="10,0">
+                <TextBlock
+                    FontFamily="{StaticResource Icon}"
+                    FontSize="{CustomResource SubFontSize}"
+                    FontWeight="{x:Bind FontWeight}"
+                    Foreground="{ThemeResource ImportantTextColor}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Bind Icon}"
+                    ToolTipService.ToolTip="{x:Bind Name}" />
+                <Border
+                    x:Name="Sign"
+                    Width="5"
+                    Height="5"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    Background="{x:Bind IsSelected, Converter={StaticResource SideMenuSignColorConverter}, Mode=OneWay}"
+                    CornerRadius="3" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Button
+            x:Name="BackButton"
+            Margin="0,0,20,0"
+            VerticalAlignment="Center"
+            Click="BackButton_Click"
+            Content="&#xE933;"
+            Foreground="{ThemeResource NormalTextColor}"
+            Style="{StaticResource DefaultCircleButtonStyle}"
+            Visibility="{x:Bind BackButtonVisibility, Mode=OneWay}" />
+        <TextBlock
+            x:Name="AppLogo"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Style="{StaticResource AppLogoStyle}"
+            Text="&#xE902;" />
+        <ListView
+            x:Name="TopMenuListView"
+            Grid.Column="2"
+            Margin="15,0,0,0"
+            Padding="0,5,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            ext:IndicatorService.IsScaleEnabled="True"
+            ext:IndicatorService.Name="Sign"
+            IsItemClickEnabled="True"
+            ItemClick="TopMenuListView_ItemClick"
+            ItemContainerStyle="{StaticResource TransparentListViewContainerStyle}"
+            ItemTemplate="{StaticResource WideTopMenuItemTemplate}"
+            ItemsPanel="{StaticResource HorizontalListViewItemsPanel}"
+            ItemsSource="{x:Bind MenuItemCollection}"
+            ScrollViewer.VerticalScrollMode="Disabled"
+            Style="{StaticResource BasicListView}" />
+        <controls1:AppSearchBox
+            x:Name="AppSearchBox"
+            Grid.Column="3"
+            Width="300"
+            Margin="15,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Background="{ThemeResource MaskAcrylicBackground}" />
+        <account:TopSlimAccountPanel
+            x:Name="SlimAccountPanel"
+            Grid.Column="4"
+            VerticalAlignment="Center" />
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Common">
+                <VisualState x:Name="Wide" />
+                <VisualState x:Name="Narrow">
+                    <VisualState.Setters>
+                        <Setter Target="AppLogo.Text" Value="&#xE903;" />
+                        <Setter Target="AppSearchBox.Width" Value="180" />
+                        <Setter Target="TopMenuListView.ItemTemplate" Value="{StaticResource NarrowTopMenuItemTemplate}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

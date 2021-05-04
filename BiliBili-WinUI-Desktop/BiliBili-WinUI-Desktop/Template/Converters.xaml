@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:BiliBili_WinUI_Desktop.Models.UI.Converter"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Template">
+    <converter:ChannelCoverConverter x:Key="ChannelCoverConverter" />
+    <converter:IntVisibilityConverter x:Key="IntVisibilityConverter" />
+    <converter:SideMenuSignColorConverter x:Key="SideMenuSignColorConverter" />
+    <converter:StringVisbilityConverter x:Key="StringVisibilityConverter" />
+    <converter:SideMenuExtraVisibilityConverter x:Key="SideMenuExtraVisibleConverter" />
+    <converter:ChannelHeaderMaskConverter x:Key="ChannelHeaderMaskConverter" />
+    <converter:CoverResolutionConverter x:Key="CoverResolutionConverter" />
+    <converter:NumberAbbrConverter x:Key="NumberAbbrConverter" />
+    <converter:DurationConverter x:Key="DurationConverter" />
+    <converter:IntBoolConverter x:Key="IntBoolConverter" />
+    <converter:SelectedColorConverter x:Key="SelectedColorConverter" />
+    <converter:RelateTimeConverter x:Key="RelateTimeConverter" />
+</ResourceDictionary>

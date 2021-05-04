@@ -1,0 +1,95 @@
+﻿<UserControl
+    x:Class="BiliBili_WinUI_Desktop.Components.Controls.AppSearchBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bilibili="using:BiliBili_Core.Models.BiliBili"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Components.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:others="using:BiliBili_WinUI_Desktop.Models.UI.Others"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    PointerEntered="UserControl_PointerEntered"
+    PointerExited="UserControl_PointerExited"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+
+        <DataTemplate x:Name="HotSearchItemTemplate" x:DataType="bilibili:HotSearch">
+            <StackPanel Padding="10" Orientation="Horizontal">
+                <TextBlock
+                    Width="25"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource SmallTipTextStyle}"
+                    Text="{x:Bind position}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="{CustomResource BasicFontSize}"
+                    Foreground="{ThemeResource ImportantTextColor}"
+                    Style="{StaticResource SmallTipTextStyle}"
+                    Text="{x:Bind show_name}" />
+                <controls:ImageEx
+                    Height="{CustomResource BasicFontSize}"
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center"
+                    Source="{x:Bind icon}"
+                    Visibility="{x:Bind icon, Converter={StaticResource StringVisibilityConverter}}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Name="SuggestItemTemplate" x:DataType="bilibili:SearchSuggestion">
+            <Border Padding="10">
+                <TextBlock
+                    Foreground="{ThemeResource NormalTextColor}"
+                    Style="{StaticResource SmallTipTextStyle}"
+                    Text="{x:Bind name}" />
+            </Border>
+        </DataTemplate>
+        <Flyout
+            x:Name="HotSearchFlyout"
+            FlyoutPresenterStyle="{StaticResource BasicFlyoutStyle}"
+            Placement="BottomEdgeAlignedLeft">
+            <ListView
+                x:Name="HotSearchListView"
+                Width="300"
+                IsItemClickEnabled="True"
+                ItemClick="HotSearchListView_ItemClick"
+                ItemContainerStyle="{StaticResource BasicListViewContainerStyle}"
+                ItemTemplate="{StaticResource HotSearchItemTemplate}"
+                ItemsSource="{x:Bind HotSearchCollection}"
+                SelectionMode="None"
+                Style="{StaticResource BasicListView}" />
+        </Flyout>
+    </UserControl.Resources>
+    <Grid>
+        <AutoSuggestBox
+            x:Name="BiliSearchBox"
+            Background="{x:Bind Background, Mode=OneWay}"
+            CornerRadius="20"
+            ItemTemplate="{StaticResource SuggestItemTemplate}"
+            KeyUp="BiliSearchBox_KeyUp"
+            PlaceholderText="搜索"
+            QuerySubmitted="BiliSearchBox_QuerySubmitted"
+            Style="{StaticResource BasicSearchBoxStyle}" />
+        <Button
+            x:Name="HotSearchButton"
+            Width="35"
+            Height="35"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Click="HotSearchButton_Click"
+            Content="&#xEA20;"
+            Style="{StaticResource DefaultCircleButtonStyle}"
+            ToolTipService.ToolTip="热搜"
+            Visibility="Collapsed" />
+        <ProgressRing
+            x:Name="LoadingRing"
+            MaxWidth="15"
+            MaxHeight="15"
+            Margin="0,0,10,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Foreground="{ThemeResource TipTextColor}" />
+    </Grid>
+</UserControl>

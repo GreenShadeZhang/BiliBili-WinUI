@@ -1,0 +1,18 @@
+﻿<UserControl
+    x:Class="BiliBili_WinUI_Desktop.Components.Widgets.LevelBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:BiliBili_WinUI_Desktop.Components.Widgets"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+
+    <Grid Height="10">
+        <Image
+            x:Name="LevelImage"
+            VerticalAlignment="Center"
+            Stretch="Uniform" />
+    </Grid>
+</UserControl>
