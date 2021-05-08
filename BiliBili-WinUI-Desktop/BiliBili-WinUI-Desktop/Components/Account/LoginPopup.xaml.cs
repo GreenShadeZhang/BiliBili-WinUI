@@ -21,6 +21,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using BiliBili_WinUI_Desktop.IoC;
+using BiliBili_Core.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using BiliBili_WinUI_Desktop.ViewModels;
 
 //https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
 
@@ -30,6 +34,8 @@ namespace BiliBili_WinUI_Desktop.Components.Account
     {
         public Popup _popup { get; set; }
         public Guid _popupId { get; set; }
+
+        private LoginViewModel ViewModel { get; } = MainContainer.Container.GetService<LoginViewModel>();
         public LoginPopup()
         {
             this.InitializeComponent();
@@ -113,52 +119,58 @@ namespace BiliBili_WinUI_Desktop.Components.Account
         {
             //var waiting = new WaitingPopup("正在验证数据...");
             //waiting.ShowPopup();
-            //string userName = UserNameInputBox.Text;
-            //string password = PasswordInputBox.Text;
-            //if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-            //{
-            //    ShowMessageBanner("用户名或密码不能为空");
-            //}
-            //else if (CaptchaBlock.Visibility == Visibility.Visible && string.IsNullOrEmpty(CaptchaBlock.Code))
-            //{
-            //    ShowMessageBanner("验证码不能为空");
-            //}
-            //else
-            //{
-            //    var result = await App.BiliViewModel._client.Account.LoginAsync(userName, password, CaptchaBlock.Code);
-            //    switch (result.Status)
-            //    {
-            //        case LoginResultType.Success:
-            //            await App.BiliViewModel.GetMeAsync();
-            //            HidePopup();
-            //            break;
-            //        case LoginResultType.Fail:
-            //            ShowMessageBanner("登录失败，请检查账号密码");
-            //            break;
-            //        case LoginResultType.Error:
-            //            ShowMessageBanner("2233娘无情地驳回了请求，请稍后重试");
-            //            break;
-            //        case LoginResultType.NeedCaptcha:
-            //            ShowMessageBanner("需要输入验证码");
-            //            CaptchaBlock.Visibility = Visibility.Visible;
-            //            await CaptchaBlock.RefreshCode();
-            //            await Task.Delay(1000);
-            //            HideMessageBanner();
-            //            break;
-            //        case LoginResultType.Busy:
-            //            ShowMessageBanner("服务器忙，请稍后重试");
-            //            break;
-            //        case LoginResultType.NeedValidate:
-            //            ShowMessageBanner("需要安全验证");
-            //            BackupWebView.Visibility = Visibility.Visible;
-            //            BackupWebView.Source = new Uri(result.Url.Replace("&ticket=1", ""));
-            //            await Task.Delay(1000);
-            //            HideMessageBanner();
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
+            string userName = UserNameInputBox.Text;
+            string password = PasswordInputBox.Text;
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            {
+                ShowMessageBanner("用户名或密码不能为空");
+            }
+            else if (CaptchaBlock.Visibility == Visibility.Visible && string.IsNullOrEmpty(CaptchaBlock.Code))
+            {
+                ShowMessageBanner("验证码不能为空");
+            }
+            else
+            {
+                var client = MainContainer.Container.GetService<IBiliBiliClient>();
+
+                var result = await client.Account.LoginAsync(userName, password, CaptchaBlock.Code);
+
+                switch (result.Status)
+                {
+                    case LoginResultType.Success:
+                        var me = await client.Account.GetMeAsync();
+
+                        ViewModel.ChangeUserInfo(me);
+                        //await App.BiliViewModel.GetMeAsync();
+                        HidePopup();
+                        break;
+                    case LoginResultType.Fail:
+                        ShowMessageBanner("登录失败，请检查账号密码");
+                        break;
+                    case LoginResultType.Error:
+                        ShowMessageBanner("2233娘无情地驳回了请求，请稍后重试");
+                        break;
+                    case LoginResultType.NeedCaptcha:
+                        ShowMessageBanner("需要输入验证码");
+                        CaptchaBlock.Visibility = Visibility.Visible;
+                        await CaptchaBlock.RefreshCode();
+                        await Task.Delay(1000);
+                        HideMessageBanner();
+                        break;
+                    case LoginResultType.Busy:
+                        ShowMessageBanner("服务器忙，请稍后重试");
+                        break;
+                    case LoginResultType.NeedValidate:
+                        ShowMessageBanner("需要安全验证");
+                        BackupWebView.Visibility = Visibility.Visible;
+                        BackupWebView.Source = new Uri(result.Url.Replace("&ticket=1", ""));
+                        await Task.Delay(1000);
+                        HideMessageBanner();
+                        break;
+                    default:
+                        break;
+                }
+            }
             //waiting.HidePopup();
         }
 

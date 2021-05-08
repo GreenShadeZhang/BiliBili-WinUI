@@ -119,6 +119,8 @@ namespace BiliBili_WinUI_Desktop.Models.UI
             //}));
             //popup.Width = Window.Current.Bounds.Width;
             //popup.Height = Window.Current.Bounds.Height;
+            popup.Width = xamlRoot.Size.Width;
+            popup.Height = xamlRoot.Size.Height;
             //var view = popup as UIElement;
             popup._popup.XamlRoot = xamlRoot;
             popup._popup.IsOpen = true;

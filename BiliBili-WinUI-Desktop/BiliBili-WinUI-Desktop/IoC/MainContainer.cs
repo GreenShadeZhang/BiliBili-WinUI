@@ -32,6 +32,8 @@ namespace BiliBili_WinUI_Desktop.IoC
 
             services.AddScoped<DesktopMainViewModel>();
 
+            services.AddScoped<LoginViewModel>();
+
             services.AddSingleton(new TokenPackage("","",0));
 
             Container = services.BuildServiceProvider();

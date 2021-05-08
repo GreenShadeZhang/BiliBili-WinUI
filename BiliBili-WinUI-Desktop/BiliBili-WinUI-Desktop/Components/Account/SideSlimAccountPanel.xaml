@@ -97,16 +97,17 @@
                 </StackPanel>
             </RelativePanel>
         </Grid>
-        <widgets:AsyncButton
+        <!--<widgets:AsyncButton
             x:Name="LoginButton"
             HorizontalAlignment="Stretch"
+            Click="LoginButton_Click"
             Icon="&#xE901;"
             Style="{StaticResource SecondaryAsyncButtonStyle}"
-            Text="登录账户" />
-        <!--<Button
+            Text="登录账户" />-->
+        <Button
             x:Name="LoginButton"
             Click="LoginButton_Click"
-            Content="登录账户" />-->
+            Content="登录账户" />
         <PersonPicture
             x:Name="UserAvatarNarrrow"
             Width="40"

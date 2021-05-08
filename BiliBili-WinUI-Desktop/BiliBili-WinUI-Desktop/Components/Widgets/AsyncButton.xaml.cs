@@ -46,15 +46,16 @@ namespace BiliBili_WinUI_Desktop.Components.Widgets
 
         private static void Icon_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            //var instance = d as AsyncButton;
-            //if (e.NewValue != null && e.NewValue is string icon)
-            //{
-            //    instance.IconBlock.Visibility = Visibility.Visible;
-            //}
-            //else
-            //{
-            //    instance.IconBlock.Visibility = Visibility.Collapsed;
-            //}
+            var instance = d as AsyncButton;
+
+            if (e.NewValue != null && e.NewValue is string icon)
+            {
+                instance.IconBlock.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                instance.IconBlock.Visibility = Visibility.Collapsed;
+            }
         }
 
 
@@ -82,6 +83,7 @@ namespace BiliBili_WinUI_Desktop.Components.Widgets
         private static void IsLoading_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var instance = d as AsyncButton;
+
             if (e.NewValue != e.OldValue && e.NewValue is bool isload)
             {
                 if (isload)
@@ -92,6 +94,7 @@ namespace BiliBili_WinUI_Desktop.Components.Widgets
                 else
                 {
                     instance.LoadingRing.Visibility = Visibility.Collapsed;
+
                     if (!string.IsNullOrEmpty(instance.Icon))
                         instance.IconBlock.Visibility = Visibility.Visible;
                 }
