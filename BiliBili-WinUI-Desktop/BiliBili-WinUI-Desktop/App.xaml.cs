@@ -45,6 +45,8 @@ namespace BiliBili_WinUI_Desktop
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {            
             m_window = new Window();
+
+            m_window.Title = "哔哩哔哩WinUI探索版";
             EnsureWindow();
         }
 

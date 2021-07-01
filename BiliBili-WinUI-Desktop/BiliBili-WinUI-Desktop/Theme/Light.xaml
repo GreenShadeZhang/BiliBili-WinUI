@@ -5,19 +5,16 @@
 
     <AcrylicBrush
         x:Key="SideBackground"
-        BackgroundSource="HostBackdrop"
         FallbackColor="#f9fafe"
         TintColor="White"
         TintOpacity="0.8" />
     <AcrylicBrush
         x:Key="PaneBackground"
-        BackgroundSource="Backdrop"
         FallbackColor="#f9fafe"
         TintColor="White"
         TintOpacity="0.8" />
     <AcrylicBrush
         x:Key="MaskAcrylicBackground"
-        BackgroundSource="Backdrop"
         FallbackColor="#f9fafe"
         TintColor="White"
         TintOpacity="0.4" />

@@ -1,50 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>BiliBili_WinUI_Desktop</RootNamespace>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <Win32Resource />
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Remove="Assets\Fonts\Richasy_BiliBili.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.18362.16" />
-    <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.18362.16" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Components\Account\LoginPopup.xaml" />
-    <None Remove="Components\Widgets\AppBarComboBox.xaml" />
-    <None Remove="Components\Widgets\AsyncButton.xaml" />
-    <None Remove="Components\Widgets\BannerBlock.xaml" />
-    <None Remove="Components\Widgets\BiliImage.xaml" />
-    <None Remove="Components\Widgets\CaptchaBlock.xaml" />
-    <None Remove="Components\Widgets\CheckButton.xaml" />
-    <None Remove="Components\Widgets\EmojiPanel.xaml" />
-    <None Remove="Components\Widgets\IconInputBox.xaml" />
-    <None Remove="Components\Widgets\IconTextBlock.xaml" />
-    <None Remove="Components\Widgets\LevelBlock.xaml" />
-    <None Remove="Components\Widgets\NumberBox.xaml" />
-    <None Remove="Components\Widgets\TipPopup.xaml" />
-    <None Remove="Components\Widgets\TrimTextBlock.xaml" />
-    <None Remove="Components\Widgets\WaitingPopup.xaml" />
-    <None Remove="DesktopMainPage.xaml" />
-    <None Remove="Pages-Desktop\Main\HomePage.xaml" />
-  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Common" Version="7.0.1" />
-    <PackageReference Include="CommunityToolkit.WinUI.Connectivity" Version="7.0.1" />
-    <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.0.1" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.0.1" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.0.1" />
-    <PackageReference Include="Microsoft.ProjectReunion" Version="0.5.6" />
-    <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.5.6" />
-    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.5.6" />
+    <PackageReference Include="CommunityToolkit.Common" Version="7.0.3" />
+    <PackageReference Include="CommunityToolkit.WinUI.Connectivity" Version="7.0.3" />
+    <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.0.3" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.0.3" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.0.3" />
+    <PackageReference Include="Microsoft.ProjectReunion" Version="0.8.0" />
+    <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.8.0" />
+    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.8.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -54,26 +30,118 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="DesktopMainPage.xaml">
+    <Page Update="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Assets\Fonts\Richasy_BiliBili.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Page Update="Pages-Desktop\Main\HomePage.xaml">
+    <Page Update="Components\Account\LoginPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
+    <Page Update="Components\Account\SideSlimAccountPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Account\TopSlimAccountPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\AppSearchBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\CoverVideoCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\DefaultVideoCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\DefaultVideoPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\DocumentPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\DocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\DynamicContentBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\DynamicDetailPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\HorizontalScrollSectionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\MessageAtBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\MessageLikeBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\MessageReplyBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\RecommendVideoCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\RenderTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\ReplyDetailPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\ReplyMainBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\ReplyTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\RepostPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\ScanChannelPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\SearchContentBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\SubPageControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\SubscribeChannelPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\TabletBangumiDetailBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\TabletVideoDetailBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\TopicCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\VideoPlayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Controls\WebPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Layout\BottomPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Layout\PagePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Layout\SidePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Layout\TopPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Others\UpdatePopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Components\Widgets\AppBarComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Components\Widgets\AsyncButton.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Components\Widgets\BannerBlock.xaml">
@@ -109,10 +177,46 @@
     <Page Update="Components\Widgets\TrimTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Components\Widgets\AsyncButton.xaml">
+    <Page Update="Components\Widgets\WaitingPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="DesktopMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dialogs\ConfirmDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dialogs\ShowImageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Pages-Desktop\Main\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Converters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Inputs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Others.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Text.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Template\Views.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Theme\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Theme\Light.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
