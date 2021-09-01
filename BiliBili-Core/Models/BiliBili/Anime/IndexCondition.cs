@@ -1,18 +1,13 @@
-﻿using BiliBili_Core.Models.Others;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Anime
+namespace BiliBili.Core
 {
     public class IndexCondition
     {
         public List<ConditionContainer> filter { get; set; }
         public List<ConditionContainer> order { get; set; }
     }
-    public class ConditionContainer:NotifyBase
+    public class ConditionContainer : NotifyBase
     {
         public string field { get; set; }
         public string name { get; set; }

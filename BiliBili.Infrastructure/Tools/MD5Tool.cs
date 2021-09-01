@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
-namespace BiliBili_Core.Tools
+namespace BiliBili.Infrastructure
 {
     public sealed class MD5Tool : IDisposable
     {

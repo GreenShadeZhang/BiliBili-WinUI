@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Feedback
+namespace BiliBili.Core
 {
     public class FeedLikeResponse
     {
@@ -32,7 +28,7 @@ namespace BiliBili_Core.Models.BiliBili.Feedback
         public bool is_latest { get; set; }
     }
 
-    public class FeedLikeItem:FeedItem
+    public class FeedLikeItem : FeedItem
     {
         public long item_id { get; set; }
         public int pid { get; set; }

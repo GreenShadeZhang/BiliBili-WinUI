@@ -1,12 +1,8 @@
-﻿using BiliBili_Core.Models.BiliBili;
-using BiliBili_Core.Models.BiliBili.Anime;
-using BiliBili_Core.Models.BiliBili.Video;
-using BiliBili_Core.Models.Others;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BiliBili_Core.Interfaces
+namespace BiliBili.Core
 {
     public interface IAnimeService
     {

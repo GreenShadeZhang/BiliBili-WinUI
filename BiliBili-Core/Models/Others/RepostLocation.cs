@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BiliBili_Core.Models.Others
+﻿namespace BiliBili.Core
 {
     public class RepostLocation
     {
@@ -16,7 +10,7 @@ namespace BiliBili_Core.Models.Others
         {
 
         }
-        public RepostLocation(int loc,int leng,int id)
+        public RepostLocation(int loc, int leng, int id)
         {
             type = 1;
             location = loc;

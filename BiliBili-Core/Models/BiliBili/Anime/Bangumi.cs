@@ -1,11 +1,6 @@
-﻿using BiliBili_Core.Models.BiliBili.Favorites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Anime
+namespace BiliBili.Core
 {
 
     public class BangumiSlim

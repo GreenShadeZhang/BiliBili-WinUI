@@ -1,14 +1,8 @@
-﻿using BiliBili_Core.Models.BiliBili;
-using BiliBili_Core.Models.BiliBili.Account;
-using BiliBili_Core.Models.BiliBili.Favorites;
-using BiliBili_Core.Models.BiliBili.Feedback;
-using BiliBili_Core.Models.BiliBili.Video;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
-namespace BiliBili_Core.Interfaces
+namespace BiliBili.Core
 {
     public interface IAccountService
     {

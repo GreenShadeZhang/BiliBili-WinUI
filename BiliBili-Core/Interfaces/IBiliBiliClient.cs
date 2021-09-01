@@ -1,9 +1,8 @@
-﻿using BiliBili_Core.Models.BiliBili;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BiliBili_Core.Interfaces
+namespace BiliBili.Core
 {
     public interface IBiliBiliClient
     {

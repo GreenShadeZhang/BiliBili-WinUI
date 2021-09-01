@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Feedback
+namespace BiliBili.Core
 {
 
     public class FeedReplyResponse
@@ -14,7 +10,7 @@ namespace BiliBili_Core.Models.BiliBili.Feedback
         public int last_view_at { get; set; }
     }
 
-    public class FeedReplyDetail:FeedDetail
+    public class FeedReplyDetail : FeedDetail
     {
         public FeedReplyItem item { get; set; }
         public int counts { get; set; }
@@ -22,7 +18,7 @@ namespace BiliBili_Core.Models.BiliBili.Feedback
         public int reply_time { get; set; }
     }
 
-    public class FeedReplyItem:FeedItem
+    public class FeedReplyItem : FeedItem
     {
         public string desc { get; set; }
         public string detail_title { get; set; }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BiliBili_Core.Models.Others
+﻿namespace BiliBili.Core
 {
     public class KeyValueModel
     {
@@ -14,7 +8,7 @@ namespace BiliBili_Core.Models.Others
         {
 
         }
-        public KeyValueModel(string key,string value)
+        public KeyValueModel(string key, string value)
         {
             Key = key;
             Value = value;

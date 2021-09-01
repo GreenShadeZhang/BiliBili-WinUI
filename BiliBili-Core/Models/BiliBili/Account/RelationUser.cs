@@ -1,11 +1,6 @@
-﻿using BiliBili_Core.Models.Others;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Account
+namespace BiliBili.Core
 {
     public class RelationUser
     {
@@ -34,7 +29,7 @@ namespace BiliBili_Core.Models.BiliBili.Account
         public int special { get; set; }
     }
 
-    public class FollowTag:NotifyBase
+    public class FollowTag : NotifyBase
     {
         public int tagid { get; set; }
         public string name { get; set; }

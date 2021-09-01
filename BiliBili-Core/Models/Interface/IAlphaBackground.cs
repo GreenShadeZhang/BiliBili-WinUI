@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BiliBili_Core.Models.Interface
+﻿namespace BiliBili.Core
 {
     /// <summary>
     /// 用于处理包含自带主题色的条目

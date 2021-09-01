@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili
+namespace BiliBili.Core
 {
     /// <summary>
     /// 分区信息

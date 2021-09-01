@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Feedback
+namespace BiliBili.Core
 {
     public class FeedAtResponse
     {
@@ -12,7 +8,7 @@ namespace BiliBili_Core.Models.BiliBili.Feedback
         public List<FeedAtDetail> items { get; set; }
     }
 
-    public class FeedAtDetail:FeedDetail
+    public class FeedAtDetail : FeedDetail
     {
         public FeedItem item { get; set; }
         public int at_time { get; set; }

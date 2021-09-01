@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BiliBili_Core.Models.BiliBili.Account
+﻿namespace BiliBili.Core
 {
     public class UserResponse
     {
@@ -43,7 +37,7 @@ namespace BiliBili_Core.Models.BiliBili.Account
         public string pendant_title { get; set; }
         public Relation relation { get; set; }
     }
-    
+
     public class Likes
     {
         public int like_num { get; set; }

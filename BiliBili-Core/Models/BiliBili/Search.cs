@@ -1,8 +1,6 @@
-﻿using BiliBili_Core.Models.Others;
-using BiliBili_Core.Tools;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili
+namespace BiliBili.Core
 {
     public class HotSearch
     {

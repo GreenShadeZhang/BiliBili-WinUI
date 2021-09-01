@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili
+namespace BiliBili.Core
 {
     public class Reply
     {
@@ -34,7 +30,7 @@ namespace BiliBili_Core.Models.BiliBili
         public Folder folder { get; set; }
         public UpAction up_action { get; set; }
         public bool show_follow { get; set; }
-        
+
         public class ReplyContent
         {
             public string message { get; set; }

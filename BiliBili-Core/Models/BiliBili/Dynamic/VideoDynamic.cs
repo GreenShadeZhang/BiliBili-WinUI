@@ -1,4 +1,4 @@
-﻿namespace BiliBili_Core.Models.BiliBili
+﻿namespace BiliBili.Core
 {
     public class VideoDynamic
     {

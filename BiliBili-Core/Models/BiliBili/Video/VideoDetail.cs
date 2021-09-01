@@ -1,11 +1,6 @@
-﻿using BiliBili_Core.Models.BiliBili.Anime;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BiliBili_Core.Models.BiliBili.Video
+namespace BiliBili.Core
 {
     public class VideoDetail
     {
@@ -92,7 +87,7 @@ namespace BiliBili_Core.Models.BiliBili.Video
         public int dislike { get; set; }
         public string evaluation { get; set; }
     }
-    
+
     public class VideoTag
     {
         public int tag_id { get; set; }
